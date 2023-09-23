@@ -1,0 +1,83 @@
+{% extends "base_hp.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <style>
+    #div_id_murajat{
+      overflow: hidden;
+      display:flex ;
+      flex-direction: column;
+    }
+    #div_id_tashkilot{
+      display:flex ;
+      flex-direction: column;
+    }
+    #id_tashkilot{
+      height: 33px;
+    }
+    #id_murajat{
+      height: 33px;
+    }
+    #div_id_bajarildi{
+      display: none;
+    }
+    #div_id_muddat_holati{
+      display: none;
+    }
+    #div_id_orinbosar{
+      display:flex ;
+      flex-direction: column;
+    }
+    #id_orinbosar{
+      height: 33px;
+    }
+    #id_orinbosar option:nth-child(1){
+      display: none;
+    }
+    #id_murajat option:nth-child(1){
+      display: none;
+    }
+  </style>
+              <form method="post" style="display: flex; justify-content: space-evenly; align-items: center;">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <div>
+                  <button class="btn btn-default btn-flat" style="margin-top: 23px;"
+                  type="submit">yuborish
+                </button>
+                </div>
+                
+              </form>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Ism Familiya Sharif</th>
+                    <th scope="col">Id Passpord</th>
+                    <th scope="col">Yash Manzili</th>
+                    <th scope="col">MFY Nomi</th>
+                    <th scope="col">Ko`cha Nomi</th>
+                    <th scope="col">Tel Raqam</th>
+                    <th scope="col">Rasm yoki Vidio</th>
+                    <th scope="col">Ariza Tur</th>
+                    <th scope="col">matn</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for ariza in ariza %}
+                  
+                  <tr>
+                    <th scope="row">{{ ariza.id }}</th>
+                    <td>{{ ariza.fish }}</td>
+                    <td>{{ ariza.idpassport }}</td>
+                    <td>{{ ariza.Yashashmanzili }}</td>
+                    <td>{{ ariza.mfynomi }}</td>
+                    <td>{{ ariza.kochanomi }}</td>
+                    <td>{{ ariza.telefonraqami }}</td>
+                    <td>{{ ariza.rasmvavidio }}</td>
+                    <td>{{ ariza.ariza_mazmuni }}</td>
+                    <td><a href='{% url "del" ariza.id %}'>del</a></td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>       
+{% endblock content %}

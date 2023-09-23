@@ -1,0 +1,18 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Ism Familiya Sharif</th>
+        <th scope="col">Id Passpord</th>
+        <th scope="col">Yash Manzili</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for ariza in ariza %}
+      <tr>
+        <th scope="row">{{ ariza.id }}</th>
+        <td>{{ ariza.fish }}</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+    {% endfor %}
